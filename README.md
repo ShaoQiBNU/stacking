@@ -83,6 +83,44 @@ for clf, label in zip([clf1, clf2, clf3, sclf],
           % (scores.mean(), scores.std(), label))
 ```
 
+> 输出结果为：
+
+```
+3-fold cross validation:
+
+Accuracy: 0.91 (+/- 0.01) [KNN]
+Accuracy: 0.91 (+/- 0.06) [Random Forest]
+Accuracy: 0.92 (+/- 0.03) [Naive Bayes]
+Accuracy: 0.95 (+/- 0.03) [StackingClassifier]
+```
+
+> 查看具体分类结果和决策边界，代码如下：
+
+```python
+import matplotlib.pyplot as plt
+from mlxtend.plotting import plot_decision_regions
+import matplotlib.gridspec as gridspec
+import itertools
+
+gs = gridspec.GridSpec(2, 2)
+
+fig = plt.figure(figsize=(10,8))
+
+for clf, lab, grd in zip([clf1, clf2, clf3, sclf], 
+                         ['KNN', 
+                          'Random Forest', 
+                          'Naive Bayes',
+                          'StackingClassifier'],
+                          itertools.product([0, 1], repeat=2)):
+
+    clf.fit(X, y)
+    ax = plt.subplot(gs[grd[0], grd[1]])
+    fig = plot_decision_regions(X=X, y=y, clf=clf)
+    plt.title(lab)
+```
+
+![image](https://github.com/ShaoQiBNU/stacking/blob/master/images/5.png)
+
 # 2. 基学习器的类别概率值作为融合模型的输入
 
 > 使用基学习器产生的类别概率作为融合模型的输入，这种情况下需要将StackingClassifier的参数设置为 use_probas=True。另外，需要注意一下 average_probas的设置，如果设置average_probas=True，那么这些基学习器对每一个类别产生的概率值会被平均，如果设置average_probas=False，那么这些基学习器对每一个类别产生的概率值会被拼接。
