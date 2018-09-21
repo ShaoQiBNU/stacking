@@ -227,4 +227,5 @@ print(sclf.predict(x))
 print(sclf.predict_proba(x))
 ```
 
-
+### 参考链接
+http://rasbt.github.io/mlxtend/user_guide/classifier/StackingClassifier/#example-3-stacked-classification-and-gridsearch.
