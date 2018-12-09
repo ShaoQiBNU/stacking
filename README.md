@@ -27,7 +27,7 @@
 
 ### (2) 融合训练和预测
 
-> 基于(1)得到的训练集和测试集，采用Logistic Regression模型对训练集Training Data learners进行训练，然后对测试集Testing learners进行预测，得到预测结果。当对新的测试集进行预测时，测试集需要先经郭所有基学习器预测，然后横向拼接得到测试集，最后再对测试集进行预测得到测试结果，如图所示：
+> 基于(1)得到的训练集和测试集，采用Logistic Regression模型对训练集Training Data learners进行训练，然后对测试集Testing learners进行预测，得到预测结果。当对新的测试集进行预测时，测试集需要先经过所有基学习器预测，然后横向拼接得到测试集，最后再对测试集进行预测得到测试结果，如图所示：
 
 ![image](https://github.com/ShaoQiBNU/stacking/blob/master/images/4.png)
 
