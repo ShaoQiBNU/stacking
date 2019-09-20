@@ -19,7 +19,7 @@
 
 > 以XGBoost为例说明，此处采用的是5折交叉验证，所以先将训练数据集Training Data划分为5份training1、training2、training3、training4和training5。之后将其中4折作为训练集，1折作为测试集，XGBoost模型基于4折数据训练，对1折数据进行预测，同时对整个测试集Testing Data做预测，这样的过程重复5次，会得到5份training的predict数据和Testing Data的predict数据，然后将5份training的predict数据纵向叠起来得到基学习器的Training Data learner，5份Testing Data的predict数据取平均值得到基学习器的Testing Data learner，如图所示：
 
-![image](https://github.com/ShaoQiBNU/stacking/blob/master/images/2.png)
+![image](https://github.com/ShaoQiBNU/stacking/blob/master/images/2-2.png)
 
 > 随机森林和KNN同XGBoost，也进行上述过程。最后，将三个基学习器的Training Data learner横向拼接在一起，得到第二步的训练集Training Data learners，将三个基学习器的Testing Data learner横向拼接在一起，得到第二步的测试集Testing learners，如图所示：
 
